@@ -70,7 +70,12 @@ const FoodLog = () => {
         })();
     }, [allFoodLogs])
 
+    const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        // implement image analysis
 
+    }
 
     return (
         <div className="page-container">
@@ -79,7 +84,7 @@ const FoodLog = () => {
                 <div className="flex items-center justify-between">
                     <div>
                         <h1 className="text-2xl font-bold text-slate-800 dark:text-white">
-                            Food Lod
+                            Food Log
                         </h1>
                         <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">Track your daily intake</p>
                     </div>
@@ -119,7 +124,7 @@ const FoodLog = () => {
                             <SparkleIcon className="size-5" />
                             AI Food Snap
                         </Button>
-                        <input type="file" accept="image/*" hidden ref={inputRef} />
+                        <input onChange={handleImageChange} type="file" accept="image/*" hidden ref={inputRef} />
                         {loading && (
                             <div className="fixed inset-0 bg-slate-100/50 dark:bg-slate-900/50 backdrop-blur flex items-center">
                                 <Loader2Icon className="size-8 text-emerald-600 dark:text-emerald-400 animate-spin" />
